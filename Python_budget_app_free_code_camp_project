@@ -1,0 +1,133 @@
+class Category:      
+    def __init__(self,category):
+        self.category=category
+        self.ledger=[]
+    def deposit(self,amount,description=""): 
+        dix={"amount":amount,"description":description}
+        self.ledger.append(dix)
+    def withdraw(self,amount,description=""):
+        has_enough=self.check_funds(amount)     
+        if(has_enough==True):
+            dix={"amount":-1*amount,"description":description}
+            self.ledger.append(dix)
+            return True
+        else:
+            return False
+    def get_balance(self):
+        total=0
+        for i in self.ledger:
+            for key,val in i.items():
+                if(key=="amount"):
+                    total+=val
+        return total
+    def transfer(self,amount,category):
+        has_enough=self.check_funds(amount)
+        a=category
+        if(has_enough==True):
+            string="Transfer to "+a.category 
+            hasoccurred=self.withdraw(amount,string)
+            if(hasoccurred==True):
+                string="Transfer from "+self.category
+                dix={"amount":amount,"description":string}
+                a.ledger.append(dix)
+                return True
+        else:
+            return False
+    def check_funds(self,amount):
+        total=self.get_balance()
+        if(total<amount):
+            return False
+        else:
+            return True
+    def __str__(self):
+        length=len(self.category)
+        string=""
+        for i in range(0,15-length//2):
+            string+="*"
+        string+=self.category
+        for i in range(15-length//2+length,30):
+            string+="*"
+        string+="\n"
+        for i in self.ledger:
+            length=len(i["description"])
+            string+=i["description"][0:23]
+            if(length<23):
+                for m in range(0,23-length):
+                    string+=" "
+            amount=i["amount"]
+            div=10      
+            no_of_digits=1
+            while(1):   
+                if(amount//div>0):
+                    div=div*10
+                    no_of_digits+=1
+                else:   
+                    break
+            if(no_of_digits<4 and amount>=0):
+                for spaces in range(0,4-no_of_digits):
+                    string+=" "
+            if(no_of_digits<4 and amount<0):
+                for spaces in range(0,4-no_of_digits-2):
+                    string+=" "
+            if(amount//1==i["amount"]):
+                string+=str(amount)+".00"+"\n"
+            else:       
+                string+=str(amount)+"\n"
+        string+="Total: "
+        Total=self.get_balance()
+        string+=str(Total)
+        return string   
+def create_spend_chart(categories):
+    expenditure_list=[]
+    for j in categories:
+        value_spent=0
+        for k in j.ledger:
+            for key,val in k.items():
+                if(key=="amount" and k["amount"]<0):
+                    value_spent+=k["amount"]
+        expenditure_list.append(value_spent)
+    total_value_spent=0
+    for i in expenditure_list:
+        total_value_spent+=i
+    percentage_spent_list=[]
+    for i in expenditure_list:
+        percentage_spent=((i)/(total_value_spent))*100
+        percentage_spent_list.append(round(percentage_spent))
+    string="Percentage spent by category\n"
+    for i in range(100,-1,-10):
+        if(i==100):
+            string+=str(i)+"|"
+        elif(i>0):
+            string+=" "+str(i)+"|"
+        else:   
+            string+="  "+str(i)+"|"
+        count=0
+        for k in percentage_spent_list:
+            if((i==k or i<k) and count!=0):
+                string+="  o"
+            if(count==0 and (i==k or i<k)):
+                string+=" o"
+            if(count==0 and i>k):
+                string+="  "
+            if(count!=0 and i>k):
+                string+="   "
+            count+=1
+        string+="  \n"
+    string+="    "
+    for i in range(0,len(percentage_spent_list)):
+        string+="---"
+    string+="-\n"
+    max=0       
+    for i in categories:
+        if(len(i.category)>max):
+            max=len(i.category)
+    for i in range(0,max):
+        string+="     "
+        for k in range(0,len(categories)):
+            if(i>len(categories[k].category)-1):
+                 string+="   "
+            else:
+                string+=categories[k].category[i]+"  "
+        if(i!=max-1):
+            string+="\n"
+    return string
