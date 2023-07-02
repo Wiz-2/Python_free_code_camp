@@ -2,6 +2,13 @@
 Coding projects under python module at freecodecamp.
 To visit, use https://www.freecodecamp.org/learn/scientific-computing-with-python/#scientific-computing-with-python-projects
 
+Certificate of completion can be seen at the below link:-
+https://www.freecodecamp.org/certification/fccf2cc6e58-7052-48d1-8f9d-ede55e4fe1e4/scientific-computing-with-python-v7
+
+
+
+Instructions for various codes:-
+
 For arithmetic arranger, you will need to follow these instructions:-
 https://www.freecodecamp.org/learn/scientific-computing-with-python/scientific-computing-with-python-projects/arithmetic-formatter
 
