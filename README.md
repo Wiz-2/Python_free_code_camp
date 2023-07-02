@@ -10,3 +10,5 @@ https://www.freecodecamp.org/learn/scientific-computing-with-python/scientific-c
 
 For python_budget_app_freecodecamp these instructions need to be used:-
 https://www.freecodecamp.org/learn/scientific-computing-with-python/scientific-computing-with-python-projects/budget-app
+
+For Probability Calculator, these instructions will suffice:-https://www.freecodecamp.org/learn/scientific-computing-with-python/scientific-computing-with-python-projects/probability-calculator
