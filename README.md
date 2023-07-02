@@ -12,3 +12,8 @@ For python_budget_app_freecodecamp these instructions need to be used:-
 https://www.freecodecamp.org/learn/scientific-computing-with-python/scientific-computing-with-python-projects/budget-app
 
 For Probability Calculator, these instructions will suffice:-https://www.freecodecamp.org/learn/scientific-computing-with-python/scientific-computing-with-python-projects/probability-calculator
+
+For AreaUsingClass, these instructions will work:-
+https://www.freecodecamp.org/learn/scientific-computing-with-python/scientific-computing-with-python-projects/polygon-area-calculator
+
+NOTE:- The code given by me need to be put in the place of the boilerplate code imported from the replit, and then they need to be run for the successful running of the code.
